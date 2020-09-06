@@ -14,18 +14,24 @@ public class HexagonalMineSweeper extends JFrame {
     private JPanel panel; // контейнер для размещения компонентов
     private JLabel label; // текстовая метка
 
-    private final int COLS = 7; // кол-во столбцов
-    private final int ROWS = 13; // кол-во рядов
+    private int COLS = 7; // кол-во столбцов
+    private int ROWS = 13; // кол-во рядов
+
+    public void setCOLS(int COLS) { this.COLS = COLS; }
+    public void setROWS(int ROWS) { this.ROWS = ROWS; }
+
+    HexagonalMineSweeper() { this(7, 13, 15); }
 
     private final int width = 1000; // ширина окна
     private final int height = 500; // высота окна
 
-    public static void main(String[] args) { new HexagonalMineSweeper(); }
+    public static void main(String[] args) { SwingUtilities.invokeLater(HexagonalMineSweeper::new); }
 
     // запускает процессы при начале игры
-    private HexagonalMineSweeper () {
-        int BOMBS = 15;
-        game = new Game(COLS, ROWS, BOMBS);
+    HexagonalMineSweeper (int cols, int rows, int bombs) {
+        game = new Game(cols, rows, bombs);
+        setCOLS(cols);
+        setROWS(rows);
         game.start();
         setImages();
         initLabel();
