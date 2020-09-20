@@ -46,6 +46,6 @@ public class Bomb {
     private void getNumbersAroundBomb (Pair coordinate) {
         for (Pair around : BoardOrganization.getCoordinatesAround(coordinate))
             if (Cell.bomb != bombMap.get(around))
-                bombMap.set(around, bombMap.get(around).getNextNumberCell());
+                bombMap.set(around, bombMap.get(around).setNextNumberCell());
     }
 }

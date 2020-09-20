@@ -1,18 +1,15 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 
-import sweeper.BoardOrganization;
-import sweeper.Cell;
-import sweeper.Game;
-import sweeper.Pair;
+import sweeper.*;
 
 public class HexagonalMineSweeper extends JFrame {
 
     private Game game; // создаёт экземпляр класса Игра, через который осуществляется управление игрой
     private JPanel panel; // контейнер для размещения компонентов
-    private JLabel label; // текстовая метка
+    private JLabel label;
+    private JButton button;
 
     private int COLS = 7; // кол-во столбцов
     private int ROWS = 13; // кол-во рядов
@@ -20,7 +17,7 @@ public class HexagonalMineSweeper extends JFrame {
     public void setCOLS(int COLS) { this.COLS = COLS; }
     public void setROWS(int ROWS) { this.ROWS = ROWS; }
 
-    HexagonalMineSweeper() { this(7, 13, 15); }
+    HexagonalMineSweeper() { this(10, 10, 10); }
 
     private final int width = 1000; // ширина окна
     private final int height = 500; // высота окна
@@ -35,14 +32,19 @@ public class HexagonalMineSweeper extends JFrame {
         game.start();
         setImages();
         initLabel();
+        initButton();
         initPanel();
         initFrame();
     }
 
-    // заполняет и добавляет метку в окно
     private void initLabel () {
         label = new JLabel("Нажми на любую ячейку, чтобы начать игру");
-        add (label, BorderLayout.SOUTH); // Отображается с левой стороны
+        add (label, BorderLayout.SOUTH); // Отображается снизу
+    }
+
+    private void initButton () {
+        button = new JButton("Заново");
+        add(button, BorderLayout.NORTH); // Отображается сверху
     }
 
     // заполняет панель объектами и добаляем её в окно
@@ -95,7 +97,10 @@ public class HexagonalMineSweeper extends JFrame {
                             game.pressRightButton(coordinate);
                     }
                 }
-
+                button.addActionListener(actionEvent -> {
+                    game.start();
+                    panel.repaint();
+                });
                 label.setText(getGameState()); // метка изменяется в соответствии с состоянием игры
                 panel.repaint(); // после каждого нажатия на кнопки мыши перерисовываем панель игры
             }

@@ -19,6 +19,6 @@ public enum Cell {
     public Object image; // к каждому состоянию клетки привязано изображение
 
     // используется в incNumbersAroundBomb, увеличивает значение в клетке при обнаружении мины по соседству
-    Cell getNextNumberCell () { return Cell.values() [this.ordinal() + 1]; }
+    Cell setNextNumberCell () { return Cell.values() [this.ordinal() + 1]; }
 
 }
