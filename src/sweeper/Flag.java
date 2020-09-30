@@ -53,7 +53,7 @@ public class Flag {
     }
 
     // открывает закрытую клетку
-    void setOpenedToClosedBombCell(Pair coordinate) {
+    void setOpenedToClosedCell(Pair coordinate) {
         if (flagMap.get(coordinate) == Cell.closed)
             flagMap.set(coordinate, Cell.opened);
     }

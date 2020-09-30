@@ -11,15 +11,15 @@ public class HexagonalMineSweeper extends JFrame {
     private JLabel label;
     private JButton button;
 
-    private int COLS = 7; // кол-во столбцов
-    private int ROWS = 13; // кол-во рядов
+    private int COLS; // кол-во столбцов
+    private int ROWS; // кол-во рядов
 
     public void setCOLS(int COLS) { this.COLS = COLS; }
     public void setROWS(int ROWS) { this.ROWS = ROWS; }
 
-    HexagonalMineSweeper() { this(10, 10, 10); }
+    HexagonalMineSweeper() { this(5, 10, 10); }
 
-    private final int width = 1000; // ширина окна
+    private final int width = 700; // ширина окна
     private final int height = 500; // высота окна
 
     public static void main(String[] args) { SwingUtilities.invokeLater(HexagonalMineSweeper::new); }

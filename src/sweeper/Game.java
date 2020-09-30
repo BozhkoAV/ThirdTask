@@ -25,7 +25,8 @@ public class Game {
     }
 
     // возвращает состояние конкретной клетки поля,
-    // если в поле флагов клетка имеет значение opened значит под ней мина
+    // если в поле флагов клетка имеет значение opened, значит возвращает состояние клетки из слоя мин
+    // иначе возвращает состояние клетки из слоя флагов
     // получается слой флагов - верхний, слой мин - нижний
     public Cell getCell (Pair coordinate) {
         if (flag.get(coordinate) == Cell.opened) {
@@ -61,13 +62,13 @@ public class Game {
         checkWinner();
     }
 
-    // открывает все мины в случае нажатия на мину, завершает игру
+    // открывает все мины в случае нажатия на клетку в которой мина, завершает игру
     private void openBombs(Pair bombed) {
         state = GameState.BOMBED;
         flag.setBombedToCell(bombed);
         for (Pair coordinate : BoardOrganization.getAllCoordinates())
             if (bomb.get(coordinate) == Cell.bomb) {
-                flag.setOpenedToClosedBombCell(coordinate);
+                flag.setOpenedToClosedCell(coordinate);
             } else {
                 flag.setNobombToFlagedCell(coordinate);
             }

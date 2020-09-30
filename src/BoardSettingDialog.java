@@ -56,10 +56,11 @@ public class BoardSettingDialog extends JDialog{
     }
 
     private void createUIComponents() {
-        Integer[] size = new Integer[] {1, 2, 3, 4, 5, 6, 7, 8, 9};
+        Integer[] size = new Integer[] {1, 2, 3, 4, 5, 6, 7, 8};
+        Integer[] size2 = new Integer[] {2, 4, 6, 8, 10, 12, 14};
         comboBox1 = new JComboBox(size);
-        comboBox2 = new JComboBox(size);
-        comboBox3 = new JComboBox(new Integer[] {1});
+        comboBox2 = new JComboBox(size2);
+        comboBox3 = new JComboBox(new Integer[] {1, 2});
 
         comboBox1.addActionListener(e -> setItems());
         comboBox2.addActionListener(e -> setItems());
